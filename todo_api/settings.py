@@ -10,7 +10,7 @@ SECRET_KEY = '2yuw!fp^#%o4-8jz#j(e6b^ot2t^@gtliuhrn=@olbu3_pcv^!'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 # librarys
 INSTALLED_APPS += [
     'rest_framework',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -35,9 +36,14 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000'
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
